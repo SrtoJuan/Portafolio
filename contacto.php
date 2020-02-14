@@ -1,4 +1,4 @@
-<html>
+<html id="normal">
 	<head>
 		<meta charset="utf-8" />
 		<title>Portafolio HTML</title>
@@ -11,13 +11,13 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body ID="cambio">
 		<?php
 			include('cookie.php');
 		?>
-		<header id="animacionPrincipio">
+		<header>
 			<div>
-				<h1 id="fuente">Portafolio HTML</h1>
+				<h1 id="fuente" id="juan">Portafolio HTML</h1>
 			</div>
 		</header>
 		<nav>
@@ -30,9 +30,63 @@
 		</nav>
 		<section>
 			<article id="cambiar">
-					<h1>Lorem Ipsum</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec lectus a mi dignissim tempor. Curabitur eu sollicitudin mi. Donec felis ex, blandit a eleifend nec, vulputate a sem. Aenean non malesuada arcu, sed scelerisque orci. Aenean in maximus sapien, iaculis placerat justo. Nulla nec odio ut nunc pharetra ultricies. Aenean blandit rhoncus porta. Proin risus massa, congue porta ipsum et, pretium aliquam urna.Aenean tincidunt ante odio, vel imperdiet felis dapibus sed. Nunc sit amet enim nulla. Fusce ac pulvinar nunc. Vestibulum molestie, justo et venenatis consequat, tellus elit gravida lorem, sed fringilla neque eros quis velit. Nam a varius velit, a sollicitudin sapien. Etiam vulputate nibh et turpis pellentesque, vel egestas nisi semper. Etiam dapibus felis nec neque fringilla, sit amet tempor diam sollicitudin. Fusce eu lobortis magna, et feugiat enim. Suspendisse posuere ante sed justo commodo aliquet.</p>
-					<img src="" alt="">
+				<div id="formizq">
+					<form action="contacto.php" method="get"> 
+						<fieldset>
+						  <legend>Datos Personales</legend>
+							Nombre<br>
+							<input type="text" placeholder="Tu nombre" name="nombre" required autofocus><br>
+							Apellido<br>
+							<input type="text" placeholder="Tu apellido" name="apellido"><br>
+							Correo electronico<br>
+							<input type="email" placeholder="Correo electrónico" name="email" required><br>
+							Telefono<br>
+							<!-- <input type="" placeholder="telefono" name="telefono"><br> -->
+							<input pattern="[0-9]{9}" name="telefono" id="telefono" placeholder="910910910"><br>
+							Genero<br>
+							<input type="radio" name="gender" value="male" checked> Hombre<br>
+							<input type="radio" name="gender" value="female"> Mujer<br>
+							Codigo Postal<br>
+							<input pattern="[0-9]{5}" name="codPostal" id="codPostal" placeholder="introduce los cinco digitos del codigo postal"><br>
+							<br><input type="submit"  value="Enviar">
+						</fieldset>
+					</form>
+				</div>
+				<div id="formder">
+					<form action="contacto.php" method="get"> 
+						<fieldset>
+							<legend>Empresa</legend>
+							Nombre Empresa<br>
+							<input type="text" placeholder="nombre empresa" name="empresa"><br>
+							Pagina Web<br>
+							<input type="url" placeholder="Tu web" name="url" required><br>
+							Fecha incorporacion<br>
+							<input type="date" placeholder="dd/mm/aaaa" name="fecha"><br>
+							Puestos<br>
+							<input type="text" name="puestos" list="puestos"/>
+									<datalist id="puestos">
+										<option value="Programador Junior">
+										<option value="Programador Señor">
+										<option value="Analista Junior">
+										<option value="Analista Señor">
+										<option value="Jefe">
+									</datalist><br>
+							Sueldo<br>
+							<input id="range" type="range" min="1" max="201000" value="5" step="50">
+							<input type="button" onclick="alert(document.getElementById('range').value);" value="Testear"><br>
+							<input type="submit"  value="Enviar">
+						</fieldset>
+							<!--Color<br>
+							<input type="color" placeholder="tipo color" name="color"><br>
+							Numero<br>
+							<input type="number" placeholder="introduce un numero" id="numero"  step="5" min="0" max="100" name="numero"><br>
+							Codigo Postal<br>
+							<input pattern="[0-9]{5}" name="codPostal" id="codPostal" placeholder="introduce los cinco digitos del codigo postal"><br>
+							<br>-->
+							
+						</fieldset>
+					 </form>
+				</div>
 			</article>
 		</section>
 		<aside>
@@ -40,7 +94,7 @@
 				· Editor de colores
 			</div>
 			<div class="div1" id="colores2">
-				Rojo<input id="rojo" type="range" onchange="cambiarColor()" name="rojo" step="1" value="50" min="0" max="255"><br>
+				Rojo<input id="rojo" type="range" onchange="cambiarColor()" onchange="iniciar()"name="rojo" step="1" value="50" min="0" max="255"><br>
 				Azul<input id="verde" type="range" onchange="cambiarColor()" name="verde" step="1" value="80" min="0" max="255"><br>
 				Rosa<input id="azul" type="range" onchange="cambiarColor()" name="azul" step="1" value="40" min="0" max="255"><br>
 				Opacidad<input id="opacidad" type="range" onchange="cambiarColor()" name="opacidad" step="0.1" value="0.8" min="0" max="1"><br><br>
@@ -118,7 +172,15 @@
 			</div>
 		</aside>
 		<footer>
+			<style>
+			body{
+				background-color:<?php print ($color) ?>;
+			}
+		</style>
 			<p><?php print(FOOTER);?></p>
 		</footer>
+		<script>
+
+		</script>
 </body>
 </html>

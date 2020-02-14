@@ -11,13 +11,10 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 	</head>
-	<body>
-		<?php
-			include('cookie.php');
-		?>
-		<header id="animacionPrincipio">
+	<body ID="cambio">
+		<header>
 			<div>
-				<h1 id="fuente">Portafolio HTML</h1>
+				<h1 id="juan">Portafolio HTML</h1>
 			</div>
 		</header>
 		<nav>
@@ -29,10 +26,86 @@
 			</ul>
 		</nav>
 		<section>
-			<article id="cambiar">
-					<h1>Lorem Ipsum</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec lectus a mi dignissim tempor. Curabitur eu sollicitudin mi. Donec felis ex, blandit a eleifend nec, vulputate a sem. Aenean non malesuada arcu, sed scelerisque orci. Aenean in maximus sapien, iaculis placerat justo. Nulla nec odio ut nunc pharetra ultricies. Aenean blandit rhoncus porta. Proin risus massa, congue porta ipsum et, pretium aliquam urna.Aenean tincidunt ante odio, vel imperdiet felis dapibus sed. Nunc sit amet enim nulla. Fusce ac pulvinar nunc. Vestibulum molestie, justo et venenatis consequat, tellus elit gravida lorem, sed fringilla neque eros quis velit. Nam a varius velit, a sollicitudin sapien. Etiam vulputate nibh et turpis pellentesque, vel egestas nisi semper. Etiam dapibus felis nec neque fringilla, sit amet tempor diam sollicitudin. Fusce eu lobortis magna, et feugiat enim. Suspendisse posuere ante sed justo commodo aliquet.</p>
-					<img src="" alt="">
+			<article id ="cambiar article">
+				<p id="vidas"></p>
+				<script>
+					var aux="";
+					var filas=parseInt(prompt("Introduce un numero de filas: "));
+					var columnas=parseInt(prompt("Introduce un numero de columnas: "));
+					var vidas=parseInt(prompt("Introduce un numero de vidas: "));
+					var arrayP = new Array(columnas);
+					for (i = 0; i < columnas; i++) {
+						arrayP[i]= new Array(filas);
+					} 
+					var aux= aux+"<table id=\"tabla\" border=\"2px solid black\" align=\"center\" height=\"50px\" width=\"50px\">";
+					for (var i=0;i<columnas;i++){
+						aux+="<tr>";
+						for (var x=0;x<filas;x++){
+							aux+="<td id="+i+x+" onmousedown=\"mousedown(event)\" onmouseup=\"Coordenadas(event)\"><img src=\"mar.jpg\" height=\"50px\" width=\"50px\"></td>";
+							arrayP[i][x]= Math.floor(Math.random()*2);
+						}	
+						aux= aux+"</tr>";
+					}
+					aux= aux+"</table>";
+					document.write(aux);
+					function mousedown(event){
+						var x = event.clientX;
+						var y = event.clientY;
+						console.log(x);
+						console.log(y);
+						var x= x - document.getElementById("tabla").offsetLeft;
+						var y = y- document.getElementById("tabla").offsetTop;
+						var ejex= Math.floor(x/60); //Dividimos la coordenada x por el tamaño de la celda(50px)
+						var ejey= Math.floor(y/60); //Dividimos la coordenada y por el tamaño de la celda(50px)
+						document.getElementById(ejey+""+ejex).innerHTML="<img src=\"mira.png\" height=\" 50px\" width=\"50px\">";
+					}
+					function Coordenadas(event){
+						var x = event.clientX;
+						var y = event.clientY;
+						console.log(x);
+						console.log(y);
+						var x = x - document.getElementById("tabla").offsetLeft;
+						var y = y - document.getElementById("tabla").offsetTop;
+						var ejex= Math.floor(x/60); //Dividimos la coordenada x por el tamaño de la celda(50px)
+						var ejey= Math.floor(y/60); //Dividimos la coordenada y por el tamaño de la celda(50px)
+						var perder = true;
+					
+						
+						switch(arrayP[ejey][ejex]){
+							case 0:
+								document.getElementById(ejey+""+ejex).innerHTML="<img src=\"agua.jpg\" height=\" 50px\" width=\"50px\">";
+								break;
+							case 1:
+								document.getElementById(ejey+""+ejex).innerHTML="<img src=\"barco-hundido.jpg\" height=\" 50px\" width=\"50px\">";
+								arrayP[ejey][ejex]=2;
+								perder = false;
+								break;
+						}
+						//Comprobar Perder
+						if (perder){
+							vidas--;				
+						}
+						document.getElementById("vidas").innerHTML = "Te quedan "+vidas+" vidas";
+						if (vidas == 0){
+							document.getElementById("article").innerHTML ="<img src=\"perder.gif\" height=\" 200px\" width=\"200px\" align=\"center\">";
+						}
+						//Comprobar Ganar
+						var ganar = true;
+						for (var i=0;i<columnas;i++){
+							for (var x=0;x<filas;x++){
+								if (arrayP[i][x] == 1){
+									ganar = false;
+								}
+							}	
+						}
+						if (ganar){
+							document.getElementById("article").innerHTML ="<img src=\"ganar.gif\" height=\" 200px\" width=\"200px\" align=\"center\">";
+						}
+					}
+				</script>
+				<form action="ejercicios.php" method="post" id="volver">
+					<input type="submit" value="Volver" name="volver">
+				</form>
 			</article>
 		</section>
 		<aside>
@@ -118,7 +191,7 @@
 			</div>
 		</aside>
 		<footer>
-			<p><?php print(FOOTER);?></p>
+			<p>Información corporativa | Copyright © empresa, S. A. 2013, Todos los derechos reservados | Aviso legal | Política de Privacidad | Gestión publicitaria</p>
 		</footer>
 </body>
 </html>

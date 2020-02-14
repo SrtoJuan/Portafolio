@@ -11,13 +11,10 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 	</head>
-	<body>
-		<?php
-			include('cookie.php');
-		?>
-		<header id="animacionPrincipio">
+	<body ID="cambio">
+		<header>
 			<div>
-				<h1 id="fuente">Portafolio HTML</h1>
+				<h1 id="fuente" id="juan">Portafolio HTML</h1>
 			</div>
 		</header>
 		<nav>
@@ -30,9 +27,29 @@
 		</nav>
 		<section>
 			<article id="cambiar">
-					<h1>Lorem Ipsum</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec lectus a mi dignissim tempor. Curabitur eu sollicitudin mi. Donec felis ex, blandit a eleifend nec, vulputate a sem. Aenean non malesuada arcu, sed scelerisque orci. Aenean in maximus sapien, iaculis placerat justo. Nulla nec odio ut nunc pharetra ultricies. Aenean blandit rhoncus porta. Proin risus massa, congue porta ipsum et, pretium aliquam urna.Aenean tincidunt ante odio, vel imperdiet felis dapibus sed. Nunc sit amet enim nulla. Fusce ac pulvinar nunc. Vestibulum molestie, justo et venenatis consequat, tellus elit gravida lorem, sed fringilla neque eros quis velit. Nam a varius velit, a sollicitudin sapien. Etiam vulputate nibh et turpis pellentesque, vel egestas nisi semper. Etiam dapibus felis nec neque fringilla, sit amet tempor diam sollicitudin. Fusce eu lobortis magna, et feugiat enim. Suspendisse posuere ante sed justo commodo aliquet.</p>
-					<img src="" alt="">
+				<?php
+					include("datos.php");
+					include("funciones.php");
+					
+					if ( isset($_POST["nombre"])){
+						
+						if ( $enlace= conectarBase($host,$usuario,$clave,$base) ){
+							$nombre = $_POST["nombre"];
+							$consulta = "DELETE FROM jugador WHERE nombre='$nombre'";
+							
+							if ( mysqli_query($enlace,$consulta) && mysqli_affected_rows($enlace)>0 ){
+								echo "<p>Registro eliminado.</p>";
+								echo "<form method='post' action='formularioBorrar.php'><input type='submit' value='Volver Formulario'></form>";
+							} else {
+								echo "<p>No se pudo eliminar</p>";
+							}
+						}else{
+							echo "<p>Servicio interrumpido</p>";
+						}
+					}else{
+						echo '<p>No se ha indicado cuál registro eliminar.</p>';
+					}
+				?>
 			</article>
 		</section>
 		<aside>
@@ -40,7 +57,7 @@
 				· Editor de colores
 			</div>
 			<div class="div1" id="colores2">
-				Rojo<input id="rojo" type="range" onchange="cambiarColor()" name="rojo" step="1" value="50" min="0" max="255"><br>
+				Rojo<input id="rojo" type="range" onchange="cambiarColor()" onchange="iniciar()"name="rojo" step="1" value="50" min="0" max="255"><br>
 				Azul<input id="verde" type="range" onchange="cambiarColor()" name="verde" step="1" value="80" min="0" max="255"><br>
 				Rosa<input id="azul" type="range" onchange="cambiarColor()" name="azul" step="1" value="40" min="0" max="255"><br>
 				Opacidad<input id="opacidad" type="range" onchange="cambiarColor()" name="opacidad" step="0.1" value="0.8" min="0" max="1"><br><br>
@@ -118,7 +135,7 @@
 			</div>
 		</aside>
 		<footer>
-			<p><?php print(FOOTER);?></p>
+			<p>Información corporativa | Copyright © empresa, S. A. 2018, Todos los derechos reservados | Aviso legal | Política de Privacidad | Gestión publicitaria</p>
 		</footer>
 </body>
 </html>

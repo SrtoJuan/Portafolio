@@ -1,0 +1,8 @@
+body{
+	background-image: url("fondoEstadio.jpg");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+div{
+	border:2px solid black;
+}

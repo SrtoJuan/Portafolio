@@ -3,6 +3,8 @@
 		<meta charset="utf-8" />
 		<title>Portafolio HTML</title>
 		<link rel="stylesheet" href="index.css">
+		<script src="escudoLogrones.js"></script>
+		<script src="logoBMW.js"></script>
 		<link rel="stylesheet" href="jquery.css">
 		<script src="java.js"></script>
 		<script src="jquery.js"></script>
@@ -11,13 +13,10 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 	</head>
-	<body>
-		<?php
-			include('cookie.php');
-		?>
-		<header id="animacionPrincipio">
+	<body ID="cambio">
+		<header>
 			<div>
-				<h1 id="fuente">Portafolio HTML</h1>
+				<h1 id="fuente" id="juan">Portafolio HTML</h1>
 			</div>
 		</header>
 		<nav>
@@ -30,9 +29,15 @@
 		</nav>
 		<section>
 			<article id="cambiar">
-					<h1>Lorem Ipsum</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec lectus a mi dignissim tempor. Curabitur eu sollicitudin mi. Donec felis ex, blandit a eleifend nec, vulputate a sem. Aenean non malesuada arcu, sed scelerisque orci. Aenean in maximus sapien, iaculis placerat justo. Nulla nec odio ut nunc pharetra ultricies. Aenean blandit rhoncus porta. Proin risus massa, congue porta ipsum et, pretium aliquam urna.Aenean tincidunt ante odio, vel imperdiet felis dapibus sed. Nunc sit amet enim nulla. Fusce ac pulvinar nunc. Vestibulum molestie, justo et venenatis consequat, tellus elit gravida lorem, sed fringilla neque eros quis velit. Nam a varius velit, a sollicitudin sapien. Etiam vulputate nibh et turpis pellentesque, vel egestas nisi semper. Etiam dapibus felis nec neque fringilla, sit amet tempor diam sollicitudin. Fusce eu lobortis magna, et feugiat enim. Suspendisse posuere ante sed justo commodo aliquet.</p>
-					<img src="" alt="">
+				<canvas id="lienzo" width="300" height="300">
+					Su navegador no soporta el elemento canvas
+				</canvas>
+				<canvas id="lienzoBMW" width="300" height="300">
+					Su navegador no soporta el elemento canvas
+				</canvas>
+				<form action="ejercicios.php" method="post" id="volverGanar">
+					<input type="submit" value="Volver" name="volver">
+				</form>
 			</article>
 		</section>
 		<aside>
@@ -118,7 +123,7 @@
 			</div>
 		</aside>
 		<footer>
-			<p><?php print(FOOTER);?></p>
+			<p>Información corporativa | Copyright © empresa, S. A. 2018, Todos los derechos reservados | Aviso legal | Política de Privacidad | Gestión publicitaria</p>
 		</footer>
 </body>
 </html>

@@ -1,0 +1,102 @@
+#colores{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#colores2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}
+#fondoImg{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#fondoImg2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}
+#cambiarTamaño{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#cambiarTamaño2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}
+#cambiarAlineacion{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#cambiarAlineacion2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}
+#cambiarEstilo{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#cambiarEstilo2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}
+#cambiarIdioma{
+	background: white;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:black;
+	margin-top:0.1%;
+}
+#cambiarIdioma2{
+	background: black;
+    border-bottom: 1px solid #e3f0e6;
+    cursor: pointer;
+    padding: 19px 15px;
+    position: relative;
+	color:white;
+}

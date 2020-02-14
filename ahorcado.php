@@ -1,4 +1,9 @@
 <html>
+	<!--este es bueno-->
+	<head>
+		<title>Juego del ahorcado</title>
+	</head>
+	<body id="cambio">
 	<head>
 		<meta charset="utf-8" />
 		<title>Portafolio HTML</title>
@@ -12,12 +17,9 @@
   crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<?php
-			include('cookie.php');
-		?>
-		<header id="animacionPrincipio">
+		<header>
 			<div>
-				<h1 id="fuente">Portafolio HTML</h1>
+				<h1 id="juan">Portafolio HTML</h1>
 			</div>
 		</header>
 		<nav>
@@ -29,10 +31,85 @@
 			</ul>
 		</nav>
 		<section>
-			<article id="cambiar">
-					<h1>Lorem Ipsum</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec lectus a mi dignissim tempor. Curabitur eu sollicitudin mi. Donec felis ex, blandit a eleifend nec, vulputate a sem. Aenean non malesuada arcu, sed scelerisque orci. Aenean in maximus sapien, iaculis placerat justo. Nulla nec odio ut nunc pharetra ultricies. Aenean blandit rhoncus porta. Proin risus massa, congue porta ipsum et, pretium aliquam urna.Aenean tincidunt ante odio, vel imperdiet felis dapibus sed. Nunc sit amet enim nulla. Fusce ac pulvinar nunc. Vestibulum molestie, justo et venenatis consequat, tellus elit gravida lorem, sed fringilla neque eros quis velit. Nam a varius velit, a sollicitudin sapien. Etiam vulputate nibh et turpis pellentesque, vel egestas nisi semper. Etiam dapibus felis nec neque fringilla, sit amet tempor diam sollicitudin. Fusce eu lobortis magna, et feugiat enim. Suspendisse posuere ante sed justo commodo aliquet.</p>
-					<img src="" alt="">
+			<article>
+				<?php
+				if (isset($_GET['Inicio'])){
+					//viene de la pagina principal
+					$aux= "<table border><tr>";
+					$palabra=$_GET['palabra'];
+					$intentos=$_GET['intentos'];
+					$palabramap = "";
+					$longitud = strlen($palabra);
+					for ($i=0;$i<strlen($palabra);$i++){
+						$aux= $aux."<td>X</td>";
+						$palabramap = $palabramap . "0";
+					}	
+				$aux= $aux."</tr></table>";
+				print $aux;
+				print "<br>";
+				}else{
+					//viene de estar a jugando
+					$palabra=$_GET['palabra'];
+					$intentos=$_GET['intentos'];
+					$palabramap=$_GET['palabramap'];
+					$palabramap= str_split($palabramap);
+					$letra=$_GET['letra'];
+					$palabraarray = str_split($palabra);
+					$aux= "<table border><tr>";
+					$intentoacertado = false;
+					for ($i=0;$i<strlen($palabra);$i++){
+						if ($palabramap[$i]==0){
+							if ($palabraarray[$i]==$letra){
+								$aux= $aux."<td>".$letra."</td>";
+								$palabramap[$i] = 1;
+								$intentoacertado = true;
+							}else{
+								$aux= $aux."<td>X</td>";
+							}
+						}else{
+							$aux= $aux."<td>".$palabraarray[$i]."</td>";
+						}	
+					}
+					$aux= $aux."</tr></table>";
+					print $aux;
+					if ($intentoacertado==false){
+						$intentos--;
+					}
+					print ("Te quedan: ".$intentos." intentos");
+					print "<br>";
+					$palabramap = implode("" , $palabramap); 
+					//Muestra si has ganado
+					//$intentos=$_GET['intentos'];
+					$longitud = strlen($palabra);
+					$ganar = true;
+					
+					for ($j=0;$j<$longitud;$j++){
+						if ($palabramap[$j]==0){
+							$ganar = false;
+						}
+					}
+					if ($ganar){
+						//print "<script>windows.location='ganar.html'</script>";
+						header("Location:ganar.php");
+					}
+					if ($intentos == 0){
+						//print ("Has perdido");
+						//print "<script>windows.location='perder.html'</script>";
+						header("Location:perder.php");
+					}
+					
+				}
+				?>	
+				<form action="ahorcado.php" method="GET">
+					<input type="hidden" name="palabra" value="<?php  print ($palabra); ?>">
+					<input type="hidden" name="palabramap" value="<?php  print ($palabramap); ?>">
+					<input type="hidden" name="intentos" value="<?php print ($intentos); ?>">
+					<input type="text" name="letra" value="" required>
+					<input type="submit" name="Jugar" value="Jugar">
+				</form>
+				<form action="ejercicios.php" method="post" id="volverAhorcado">
+					<input type="submit" value="Volver" name="volver">
+				</form>
 			</article>
 		</section>
 		<aside>
@@ -118,7 +195,9 @@
 			</div>
 		</aside>
 		<footer>
-			<p><?php print(FOOTER);?></p>
+			<p>Información corporativa | Copyright © empresa, S. A. 2013, Todos los derechos reservados | Aviso legal | Política de Privacidad | Gestión publicitaria</p>
 		</footer>
 </body>
+</html>
+	</body>
 </html>

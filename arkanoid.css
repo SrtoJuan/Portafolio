@@ -1,0 +1,28 @@
+#canvas{
+	margin-left: 36%;
+	margin-top: 0%;
+}
+#start{
+	margin-left: 44%;
+}
+html{
+	background-color: black;
+}
+h1{
+	color:white;
+	margin-left: 35%;
+	font-size:60px;
+}
+section{
+	margin-left:70%;
+	margin-top:3%;
+	color:red;
+}
+#ranking{
+	color:red;
+	margin-left:70%;
+	margin-top:-30%;
+}
+#tablaGanadores{
+	color:red;
+}
